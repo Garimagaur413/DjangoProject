@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+{% if user.is_authenticated %}
+<a href="{% url 'viewallarticles' %}">View All Articles</a>|
+<a href="{% url 'createnewarticle' %}">Create New Articl</a>|
+<a href="{% url 'viewprofile' %}"> View Profile</a>|
+ <a href="{% url 'changepassword' %}">Change Password</a> |
+<a href="{% url 'logout' %}">logout</a>
+{% else %}
+<a href="{% url 'guestarticles' %}">Home</a> |
+<a href="{% url 'register' %}">Register</a>|
+<a href="{% url 'login' %}">Login</a>|
+{% endif %}
+</br>
+</br>
+{% for message in messages %}
+{{message}}
+{% endfor %}
+<br>
+{% block content%}
+{% endblock %}
+
+
+</body>
+</html>
